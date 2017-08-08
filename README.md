@@ -10,8 +10,6 @@ TODO: define the overview.
 
 1. Python 2.7.10
 2. virtualenv
-3. web.py
-4. nose
 
 ## Setup
 
@@ -34,9 +32,7 @@ Start the web application:
 
 ## Running tests
 
-Use `nose` to run tests:
-
-    $ nosetests
+TODO: define how to run unit tests
 
 ## Development workflow
 
@@ -52,6 +48,5 @@ TODO: define the development workflow.
 
 ## References
 
-[Zork](https://en.wikipedia.org/wiki/Zork)
-[Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
-
+* [Zork](https://en.wikipedia.org/wiki/Zork)
+* [Finite-state machine](https://en.wikipedia.org/wiki/Finite-state_machine)
