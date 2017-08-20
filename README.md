@@ -32,7 +32,9 @@ Start the web application:
 
 ## Running tests
 
-TODO: define how to run unit tests
+Just run:
+
+    nosetests
 
 ## Development workflow
 
