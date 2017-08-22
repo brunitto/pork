@@ -11,7 +11,19 @@ class Parser(object):
         """
         Initialization function.
         """
-        pass
+        self.lexicon = [
+            ("verb", "hit"),
+            ("verb", "call"),
+            ("verb", "yell"),
+            ("noun", "uncle"),
+            ("noun", "otto"),
+            ("noun", "hammer"),
+            ("noun", "funny"),
+            ("noun", "farm"),
+            ("stop", "the"),
+            ("stop", "in"),
+            ("stop", "with"),
+        ]
 
     def tokenize(self, user_input):
         """
@@ -23,4 +35,13 @@ class Parser(object):
         """
         Parse function.
         """
-        pass
+        result = []
+        words = self.tokenize(user_input)
+        for word in words:
+            for item in self.lexicon:
+                if word == item[1]:
+                    result.append(item)
+                    break
+            else:
+                result.append(("error", word))
+        return result
