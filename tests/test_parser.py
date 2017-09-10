@@ -14,40 +14,60 @@ class TestParser(object):
         """
         Setup function.
         """
-        self.parser = Parser()
+        pass
 
     def teardown(self):
         """
         Teardown function.
         """
-        self.parser = None
+        pass
 
     def test_tokenize(self):
         """
         Tokenize test function.
         """
-        user_input = "hit the uncle otto with the hammer"
-        tokens = self.parser.tokenize(user_input)
-        assert_equal(tokens[0], "hit")
-        assert_equal(tokens[1], "the")
-        assert_equal(tokens[2], "uncle")
-        assert_equal(tokens[3], "otto")
-        assert_equal(tokens[4], "with")
-        assert_equal(tokens[5], "the")
-        assert_equal(tokens[6], "hammer")
+        parser = Parser()
 
-    def test_parse(self):
+        user_input = "GET THE KEY"
+        tokens = parser.tokenize(user_input)
+        assert_equal(tokens[0], "GET")
+        assert_equal(tokens[1], "THE")
+        assert_equal(tokens[2], "KEY")
+
+    def test_clean(self):
         """
-        Parse test function.
+        Clean test function.
         """
-        user_input = "hit the uncle otto with the hammer"
-        parsed_input = self.parser.parse(user_input)
-        assert_equal(parsed_input, [
-            ("verb", "hit"),
-            ("stop", "the"),
-            ("noun", "uncle"),
-            ("noun", "otto"),
-            ("stop", "with"),
-            ("stop", "the"),
-            ("noun", "hammer"),
-        ])
+        parser = Parser()
+
+        user_input = "GET THE KEY"
+        tokens = parser.tokenize(user_input)
+        clean_tokens = parser.clean(tokens)
+        assert_equal(clean_tokens[0], "GET")
+        assert_equal(clean_tokens[1], "KEY")
+
+    def test_handle(self):
+        """
+        Handle test function.
+        """
+        parser = Parser()
+
+        user_input = "GET THE KEY"
+        handled_input = parser.handle(user_input)
+        assert_equal(handled_input.action, "GET")
+        assert_equal(handled_input.object, "KEY")
+
+        user_input = "LOOK THROUGH THE WINDOW"
+        handled_input = parser.handle(user_input)
+        assert_equal(handled_input.action, "LOOK")
+        assert_equal(handled_input.object, "WINDOW")
+
+        user_input = "SLEEP"
+        handled_input = parser.handle(user_input)
+        assert_equal(handled_input.action, "SLEEP")
+        assert_equal(handled_input.object, None)
+
+        user_input = "OPEN THE RED DOOR USING THE BLUE KEY"
+        handled_input = parser.handle(user_input)
+        assert_equal(handled_input.action, "OPEN")
+        assert_equal(handled_input.object, "RED")
