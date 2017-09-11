@@ -33,31 +33,31 @@ class Parser(object):
         """
         self.stops = ["THE", "THROUGH"]
 
-    def tokenize(self, user_input):
+    def tokenize(self, p_user_input):
         """
         Tokenize function.
         """
         # Split the user input by spaces and return
-        return user_input.split(" ")
+        return p_user_input.split(" ")
 
-    def clean(self, tokens):
+    def clean(self, p_tokens):
         """
         Clean function.
         """
         # For each stop word, try to remove it from tokens
         for stop in self.stops:
             try:
-                tokens.remove(stop)
+                p_tokens.remove(stop)
             except ValueError:
                 continue
 
-        return tokens
+        return p_tokens
 
-    def handle(self, user_input):
+    def handle(self, p_user_input):
         """
         Handle function.
         """
-        tokens = self.clean(self.tokenize(user_input))
+        tokens = self.clean(self.tokenize(p_user_input))
 
         # If there are two or more tokens, assume that the first is the action
         # and the second is the object
