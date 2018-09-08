@@ -22,11 +22,11 @@ Clone the repository:
 Create the Python environment if it does not exists:
 
     $ cd /path/to/pork
-    $ virtualenv ENV
+    $ virtualenv venv
 
 Activate the virtualenv:
 
-    $ source ENV/bin/activate
+    $ source venv/bin/activate
 
 Install requirements:
 
